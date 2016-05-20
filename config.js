@@ -4,7 +4,7 @@ var config = {
     rootDir: __dirname,
 
     mysql: {
-        host: 'localhost',
+        host: 'localhost:3306',
         user: 'root',
         password: '',
         database: 'lab1_music_store'

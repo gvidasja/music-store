@@ -5,11 +5,11 @@ insert into artists(
     photo,
     location
 ) values (
-    {id},
-    {name},
-    {bio},
-    {photo},
-    {location}
+    '{id}',
+    '{name}',
+    '{bio}',
+    '{photo}',
+    '{location}'
 ) on duplicate key update
     id = values(id),
     name = values(name),

@@ -1,5 +1,6 @@
 var express = require( 'express' );
 var db = require( './../database' );
+var helpers = require( './../helpers' );
 
 var queries = {
     getAlbums: require( './get-all.sql' ),
@@ -31,7 +32,7 @@ function getAlbum( request, response ) {
     var id = request.params.id;
 
     if( id ) {
-        db.query( insertData( queries.getAlbum, request.params ), ( error, rows ) => {
+        db.query( helpers.insertData( queries.getAlbum, request.params ), ( error, rows ) => {
             if( error ) {
                 response.status( 400 );
                 response.send( error.message );
@@ -53,7 +54,7 @@ function saveAlbum( request, response ) {
             var data = request.body;
             data.id = data.id || rows[ 0 ].id + 1;
 
-            db.query( insertData( queries.saveAlbum, data ), ( error, rows ) => {
+            db.query( helpers.nsertData( queries.saveAlbum, data ), ( error, rows ) => {
                 if( error ) {
                     response.status( 400 );
                     response.send( error.message );
@@ -67,7 +68,7 @@ function saveAlbum( request, response ) {
 }
 
 function deleteAlbum( request, response ) {
-    db.query( insertData( queries.deleteAlbum, request.params ), ( error, rows ) => {
+    db.query( helpers.insertData( queries.deleteAlbum, request.params ), ( error, rows ) => {
         if( error ) {
             response.status( 400 );
             response.send( error.message );
@@ -76,12 +77,6 @@ function deleteAlbum( request, response ) {
             response.send();
         }
     } );
-}
-
-function insertData( query, object ) {
-    query = query.replace(/{(\w*)}/g, (match, key) => object[key] || null);
-
-    return query;
 }
 
 module.exports = albumsController;
