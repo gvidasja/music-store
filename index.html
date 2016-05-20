@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Music Store</title>
-    <link rel="stylesheet" href="libs/bootstrap.min.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .header {
+            padding: 48px 48px 48px 24px;
+            background-color: darkslategray;
+            color: white;
+
+            font-size: 32px;
+        }
+    </style>
 </head>
 <body ng-app="MusicStore">
+
+    <div class="header">
+        Music Store
+    </div>
+
     <div class="container-fluid">
         <ul class="nav nav-tabs">
             <li><a href="#albums">Albums</a></li>

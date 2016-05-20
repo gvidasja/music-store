@@ -50,6 +50,10 @@ function buildLibs() {
         .pipe( gulp.dest( `./${config.staticDir}/libs` ) );
 }
 
+gulp.task('watch', function() {
+    gulp.watch(config.html[0], ['html']);
+});
+
 gulp.task( 'compile', () => compile( false ) );
 gulp.task( 'compile-watch', () => compile( true ) );
 gulp.task( 'html', () => buildHtml() );
@@ -60,5 +64,5 @@ gulp.task( 'prod', () => {
 } );
 
 gulp.task( 'dev', () => {
-    return seq( 'libs', 'html', [ 'compile-watch' ] );
+    return seq( 'libs', 'html', [ 'compile-watch', 'watch' ] );
 } );

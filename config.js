@@ -1,6 +1,14 @@
 var config = {
     port: 3000,
     staticDir: 'build',
+    rootDir: __dirname,
+
+    mysql: {
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'lab1_music_store'
+    },
 
     js: [ './app/app.js' ],
     index: [ './app/index.html' ],
@@ -15,7 +23,9 @@ var config = {
 
     templateCache: {
         standalone: true,
-        base: './'
+        transformUrl: function (url) {
+            return url.match(/[^\/]*\.html$/)[0];
+        }
     }
 };
 

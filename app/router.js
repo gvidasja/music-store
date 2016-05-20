@@ -4,16 +4,19 @@ export function MusicStoreRouter( $routeProvider ) {
         .when( '/albums', {
             controller: 'AlbumsController',
             controllerAs: 'albums',
-            template: 'aaaaaaa{{albums.lel}}'
+            templateUrl: 'albums/albums-list.html'
         } )
-        .when( '/artists', {
-            controller: 'AlbumsController',
-            controllerAs: 'artists',
-            template: '{{albums.lel}}'
-        } )
-        .when( '/tracks', {
-            controller: 'AlbumsController',
-            controllerAs: 'tracks',
-            template: '{{albums.lel}}'
-        } )
+        .when( '/album', {
+            controller: 'AlbumController',
+            controllerAs: 'album',
+            templateUrl: 'albums/album-edit.html'
+        })
+        .when( '/album/:id', {
+            controller: 'AlbumController',
+            controllerAs: 'album',
+            templateUrl: 'albums/album-edit.html'
+        })
+        .otherwise({
+            redirectTo: '/albums'
+        })
 }
