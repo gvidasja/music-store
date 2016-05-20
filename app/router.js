@@ -16,7 +16,25 @@ export function MusicStoreRouter( $routeProvider ) {
             controllerAs: 'album',
             templateUrl: 'albums/album-edit.html'
         })
+
+
+        .when( '/artists', {
+            controller: 'ArtistsController',
+            controllerAs: 'artists',
+            templateUrl: 'artists/artists-list.html'
+        } )
+        .when( '/artist', {
+            controller: 'ArtistController',
+            controllerAs: 'artist',
+            templateUrl: 'artists/artist-edit.html'
+        })
+        .when( '/artist/:id', {
+            controller: 'ArtistController',
+            controllerAs: 'artist',
+            templateUrl: 'artists/artist-edit.html'
+        })
+
         .otherwise({
-            redirectTo: '/albums'
+            redirectTo: '/artists'
         })
 }

@@ -1,22 +1,22 @@
 /* @ngInject */
-export function AlbumsController (AlbumsService) {
+export function ArtistsController (ArtistsService) {
     var self = this;
 
     angular.extend(self, {
         list: [],
-        deleteAlbum: deleteAlbum,
+        deleteArtist: deleteArtist,
         error: null
     });
 
-    function deleteAlbum(album) {
-        AlbumsService.deleteAlbum(album).then(() => {
-            getAlbums();
+    function deleteArtist(artist) {
+        ArtistsService.deleteArtist(artist).then(() => {
+            getArtists();
             self.error = null;
         }, showError);
     }
 
-    function getAlbums() {
-        AlbumsService.getAlbums().then((response) => {
+    function getArtists() {
+        ArtistsService.getArtists().then((response) => {
             self.list = response.data;
             self.error = null;
         }, showError);
@@ -26,6 +26,6 @@ export function AlbumsController (AlbumsService) {
         self.error = error.data;
     }
 
-    getAlbums();
+    getArtists();
 }
 

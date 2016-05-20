@@ -11,11 +11,11 @@ insert into albums(
     fk_DiscountId
 ) values (
     {id},
-    {title},
+    '{title}',
     {year},
     {price},
     {exclusive},
-    {albumArt},
+    '{albumArt}',
     {type},
     {recordLabel},
     {artist},

@@ -4,6 +4,6 @@ export function AlbumsService( $http ) {
         getAlbums: () => $http.get('/albums'),
         getAlbum: (id) => $http.get(`/albums/${id}`),
         saveAlbum: (album) => $http.post('/albums', album),
-        deleteAlbum: (album) => $http.delete('/albums', album)
+        deleteAlbum: (album) => $http.delete(`/albums/${album.id}`)
     }
 }

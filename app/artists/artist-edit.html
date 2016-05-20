@@ -1,0 +1,53 @@
+<div class="container" style="margin-top: 12px">
+    <div class="alert-alert-danger" ng-if="artist.error">{{artist.error}}</div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Add new artist
+                </div>
+
+                <div class="panel-body">
+                    <form>
+                        <fieldset class="form-group">
+                            <input type="text"
+                                   placeholder="Name"
+                                   ng-model="artist.model.name"
+                                   class="form-control"
+                            />
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <input type="text"
+                                   placeholder="Bio"
+                                   ng-model="artist.model.bio"
+                                   class="form-control"
+                            />
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <input type="text"
+                                   placeholder="Photo url"
+                                   ng-model="artist.model.photo"
+                                   class="form-control"
+                            />
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <input type="text"
+                                   placeholder="Location"
+                                   ng-model="artist.model.location"
+                                   class="form-control"
+                            />
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="panel-footer">
+                    <a ng-click="artist.submit()" class="btn btn-primary">Save</a>
+                    <a href="#artists" class="btn">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

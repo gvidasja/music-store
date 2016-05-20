@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 
 var mapsRouter = require('./maps');
 var albumsRouter = require('./albums/albums');
+var artistsRouter = require('./artists/artists');
 
 var app = express();
 
@@ -14,6 +15,7 @@ app.use(express.static(`${config.rootDir}/${config.staticDir}`));
 app.use(express.static(`${config.rootDir}/node_modules/bootstrap/dist/`));
 
 app.use('/albums', albumsRouter);
+app.use('/artists', artistsRouter);
 app.use('/maps', mapsRouter);
 
 function getIndex(request, response) {

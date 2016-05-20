@@ -1,0 +1,1 @@
+delete from artists where id = {id}
