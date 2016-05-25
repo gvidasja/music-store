@@ -1,0 +1,1 @@
+delete from promos where id = {id}

@@ -9,7 +9,8 @@ var concat = require( 'gulp-concat' );
 var annotate = require( 'gulp-ng-annotate' );
 var inject = require( 'gulp-inject' );
 var seq = require( 'run-sequence' );
-var templateCache = require( 'gulp-angular-templatecache');
+var templateCache = require( 'gulp-angular-templatecache' );
+var flatten = require( 'gulp-flatten' );
 
 var config = require( './config' );
 
@@ -41,6 +42,7 @@ function buildJs( browserifiedBundle ) {
 
 function buildHtml() {
     return gulp.src( config.html )
+        .pipe( flatten() )
         .pipe( templateCache( config.templateCache ) )
         .pipe( gulp.dest( `${config.staticDir}` ) );
 }
@@ -50,9 +52,9 @@ function buildLibs() {
         .pipe( gulp.dest( `./${config.staticDir}/libs` ) );
 }
 
-gulp.task('watch', function() {
-    gulp.watch(config.html[0], ['html']);
-});
+gulp.task( 'watch', function() {
+    gulp.watch( config.html[ 0 ], [ 'html' ] );
+} );
 
 gulp.task( 'compile', () => compile( false ) );
 gulp.task( 'compile-watch', () => compile( true ) );

@@ -1,0 +1,36 @@
+<div class="container" style="margin-top: 12px">
+    <alert message="discounts.error"></alert>
+
+    <a href="#discount" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        <span>Add new discount</span>
+    </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th colspan="2">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="discount in discounts.list">
+                <td>
+                    <a ng-href="#discount/{{discount.id}}">
+                        {{discount.name}}
+                    </a>
+                </td>
+                <td>{{discount.amount}}</td>
+                <td>
+                    {{discount.type || capitalize}}
+                </td>
+                <td>
+                    <span ng-click="discounts.deleteDiscount(discount)"
+                          class="clickable glyphicon glyphicon-trash">
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

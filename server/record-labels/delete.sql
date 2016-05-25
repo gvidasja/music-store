@@ -1,0 +1,1 @@
+delete from recordLabels where id = {id}

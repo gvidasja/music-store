@@ -5,6 +5,13 @@ var bodyParser = require('body-parser');
 var mapsRouter = require('./maps');
 var albumsRouter = require('./albums/albums');
 var artistsRouter = require('./artists/artists');
+var discountsRouter = require('./discounts/discounts');
+var ordersRouter = require('./orders/orders');
+var paymentsRouter = require('./payments/payments');
+var promosRouter = require('./promos/promos');
+var recordLabelsRouter = require('./record-labels/record-labels');
+var tracksRouter = require('./tracks/tracks');
+var usersRouter = require('./users/users');
 
 var app = express();
 
@@ -16,6 +23,14 @@ app.use(express.static(`${config.rootDir}/node_modules/bootstrap/dist/`));
 
 app.use('/albums', albumsRouter);
 app.use('/artists', artistsRouter);
+app.use('/discounts', discountsRouter);
+app.use('/orders', ordersRouter);
+app.use('/payments', paymentsRouter);
+app.use('/promos', promosRouter);
+app.use('/record-labels', recordLabelsRouter);
+app.use('/tracks', tracksRouter);
+app.use('/users', usersRouter);
+
 app.use('/maps', mapsRouter);
 
 function getIndex(request, response) {

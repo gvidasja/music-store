@@ -1,40 +1,46 @@
 /* ngInject */
 export function MusicStoreRouter( $routeProvider ) {
+    $routeProvider.addRoutes = addRoutes;
+
     $routeProvider
-        .when( '/albums', {
-            controller: 'AlbumsController',
-            controllerAs: 'albums',
-            templateUrl: 'albums/albums-list.html'
-        } )
-        .when( '/album', {
-            controller: 'AlbumController',
-            controllerAs: 'album',
-            templateUrl: 'albums/album-edit.html'
-        })
-        .when( '/album/:id', {
-            controller: 'AlbumController',
-            controllerAs: 'album',
-            templateUrl: 'albums/album-edit.html'
-        })
-
-
-        .when( '/artists', {
-            controller: 'ArtistsController',
-            controllerAs: 'artists',
-            templateUrl: 'artists/artists-list.html'
-        } )
-        .when( '/artist', {
-            controller: 'ArtistController',
-            controllerAs: 'artist',
-            templateUrl: 'artists/artist-edit.html'
-        })
-        .when( '/artist/:id', {
-            controller: 'ArtistController',
-            controllerAs: 'artist',
-            templateUrl: 'artists/artist-edit.html'
-        })
-
+        .addRoutes( 'Album' )
+        .addRoutes( 'Artist' )
+        .addRoutes( 'Discount' )
+        .addRoutes( 'Order' )
+        .addRoutes( 'Payment' )
+        .addRoutes( 'Promo' )
+        .addRoutes( 'RecordLabel' )
+        .addRoutes( 'Track' )
+        .addRoutes( 'User' )
         .otherwise({
-            redirectTo: '/artists'
-        })
+            redirectTo: '/albums'
+        });
+}
+
+function getRoutes( modulePascalCase, moduleCamelCase, moduleKebabCase ) {
+    return {
+        edit: {
+            controller: `${modulePascalCase}Controller`,
+            controllerAs: `${moduleCamelCase}`,
+            templateUrl: `${moduleKebabCase}-edit.html`
+        },
+        list: {
+            controller: `${modulePascalCase}sController`,
+            controllerAs: `${moduleCamelCase}s`,
+            templateUrl: `${moduleKebabCase}s-list.html`
+        }
+    }
+}
+
+function addRoutes( module ) {
+    var modulePascalCase = module;
+    var moduleCamelCase = module.split(/(?=[A-Z])/).map((str, i) => i == 0 ? str.toLowerCase() : str).join('');
+    var moduleKebabCase = module.split(/(?=[A-Z])/).map(str => str.toLowerCase()).join('-');
+
+    var routes = getRoutes( modulePascalCase, moduleCamelCase, moduleKebabCase );
+
+    return this
+        .when( `/${moduleKebabCase}s`, routes.list )
+        .when( `/${moduleKebabCase}`, routes.edit )
+        .when( `/${moduleKebabCase}/:id`, routes.edit );
 }

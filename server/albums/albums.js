@@ -54,7 +54,7 @@ function saveAlbum( request, response ) {
             var data = request.body;
             data.id = data.id || rows[ 0 ].id + 1;
 
-            db.query( helpers.nsertData( queries.saveAlbum, data ), ( error, rows ) => {
+            db.query( helpers.insertData( queries.saveAlbum, data ), ( error, rows ) => {
                 if( error ) {
                     response.status( 400 );
                     response.send( error.message );

@@ -1,24 +1,29 @@
-import { AlbumsController } from './albums/albums-list-controller';
-import { AlbumsService } from './albums/albums-service';
+import { AlbumsModule } from './albums/albums-module';
+import { ArtistsModule } from './artists/artists-module';
+import { DiscountsModule } from './discounts/discounts-module';
+import { OrdersModule } from './orders/orders-module';
+import { PaymentsModule } from './payments/payments-module';
+import { PromosModule } from './promos/promos-module';
+import { RecordLabelsModule } from './record-labels/record-labels-module';
+import { TracksModule } from './tracks/tracks-module';
+import { UsersModule } from './users/users-module';
+import { CommonModule } from './common/common-module';
+
 import { MusicStoreRouter } from './router';
-import { AlbumController } from './albums/album-edit-controller';
-import { capitalize } from './filters/capitalize';
-import { MapsService } from './services/maps';
-import { ArtistsController } from './artists/artists-list-controller';
-import { ArtistController } from './artists/artist-edit-controller';
-import { ArtistsService } from './artists/artists-service';
 
-var MusicStore = angular.module( 'MusicStore', [ 'ngRoute', 'templates' ] )
+var MusicStore = angular.module( 'MusicStore', [
+    'ngRoute',
+    'templates',
 
-    .config( MusicStoreRouter )
+    AlbumsModule,
+    ArtistsModule,
+    DiscountsModule,
+    OrdersModule,
+    PaymentsModule,
+    PromosModule,
+    RecordLabelsModule,
+    TracksModule,
+    UsersModule,
 
-    .controller( 'AlbumsController', AlbumsController )
-    .controller( 'AlbumController', AlbumController )
-    .controller( 'ArtistsController', ArtistsController )
-    .controller( 'ArtistController', ArtistController )
-
-    .factory( 'AlbumsService', AlbumsService )
-    .factory( 'ArtistsService', ArtistsService )
-    .factory( 'MapsService', MapsService )
-
-    .filter( 'capitalize', capitalize );
+    CommonModule
+] ).config( MusicStoreRouter );

@@ -1,0 +1,1 @@
+delete from discounts where id = {id}
