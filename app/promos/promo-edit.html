@@ -13,74 +13,25 @@
                     <form>
                         <fieldset class="form-group">
                             <input type="text"
-                                   placeholder="Title"
-                                   ng-model="promo.model.title"
+                                   disabled
+                                   ng-if="promo.disabled"
+                                   ng-model="promo.model.code"
                                    class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <input type="number"
-                                   placeholder="Year"
-                                   ng-model="promo.model.year"
+                            >
+                            <input type="text"
+                                   placeholder="Code"
+                                   ng-if="!promo.disabled"
+                                   ng-model="promo.model.code"
                                    class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <input type="number"
-                                       placeholder="Price"
-                                       ng-model="promo.model.price"
-                                       class="form-control"
-                                />
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"
-                                           ng-model="promo.model.exclusive"
-                                           ng-true-value="1"
-                                           ng-false-value="0"
-                                    />
-                                    Exclusive
-                                </label>
-                            </div>
+                            >
                         </fieldset>
 
                         <fieldset class="form-group">
                             <input type="text"
-                                   placeholder="Promo art url"
-                                   ng-model="promo.model.promoArt"
+                                   placeholder="Description"
+                                   ng-model="promo.model.description"
                                    class="form-control"
                             />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="promo.model.type"
-                                    class="form-control"
-                                    title="type"
-                                    ng-options="at.id as at.name | capitalize for at in promo.promoTypes">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="promo.model.recordLabel"
-                                    class="form-control"
-                                    title="recordLabel"
-                                    ng-options="rl.id as rl.name for rl in promo.recordLabels">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="promo.model.artist"
-                                    class="form-control"
-                                    title="artist"
-                                    ng-options="a.id as a.name for a in promo.artists">
-                            </select>
                         </fieldset>
 
                         <fieldset class="form-group">
@@ -89,6 +40,15 @@
                                     title="discount"
                                     ng-options="d.id as d.name for d in promo.discounts">
                             </select>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <input type="number"
+                                   placeholder="Amount"
+                                   required
+                                   ng-model="promo.model.amount"
+                                   class="form-control"
+                            />
                         </fieldset>
                     </form>
                 </div>

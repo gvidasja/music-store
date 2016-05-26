@@ -1,1 +1,1 @@
-select count(id) as id from promos
+select count(code) as code from promos

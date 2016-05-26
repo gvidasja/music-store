@@ -9,36 +9,22 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Year</th>
-                <th>Price</th>
-                <th>Type</th>
-                <th colspan="3">Record Label</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Discount</th>
+                <th colspan="2">Amount</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="promo in promos.list">
                 <td>
-                    <a ng-href="#promo/{{promo.id}}">
-                        {{promo.title}}
+                    <a ng-href="#promo/{{promo.code}}">
+                        {{promo.code}}
                     </a>
                 </td>
-                <td>{{promo.artist}}</td>
-                <td>{{promo.year}}</td>
-                <td>{{promo.price | currency}}</td>
-                <td>{{promo.type}}</td>
-                <td>{{promo.recordLabel}}</td>
-                <td>
-                    <span ng-show="promo.discount"
-                          class="label label-success pull-right">
-                        {{promo.discount | capitalize}}
-                    </span>
-                    <span ng-show="promo.exclusive"
-                          class="label label-warning pull-right">
-                        Exclusive
-                    </span>
-                </td>
+                <td>{{promo.description}}</td>
+                <td>{{promo.discount}}</td>
+                <td>{{promo.amount}}</td>
                 <td>
                     <span ng-click="promos.deletePromo(promo)"
                           class="clickable glyphicon glyphicon-trash">

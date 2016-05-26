@@ -1,1 +1,1 @@
-delete from promos where id = {id}
+delete from promos where code = '{code}'

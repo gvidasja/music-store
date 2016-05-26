@@ -1,32 +1,15 @@
 insert into promos(
-    id,
-    title,
-    year,
-    price,
-    exclusive,
-    promoArt,
-    type,
-    fk_RecordLabelId,
-    fk_ArtistId,
-    fk_DiscountId
+    code,
+    description,
+    fk_Discountid,
+    amountLeft
 ) values (
-    {id},
-    '{title}',
-    {year},
-    {price},
-    {exclusive},
-    '{promoArt}',
-    {type},
-    {recordLabel},
-    {artist},
-    {discount}
+    '{code}',
+    '{description}',
+    {discount},
+    {amount}
 ) on duplicate key update
-    title = values(title),
-    year = values(year),
-    price = values(price),
-    exclusive = values(exclusive),
-    promoArt = values(promoArt),
-    type = values(type),
-    fk_RecordLabelId = values(fk_RecordLabelId),
-    fk_ArtistId = values(fk_ArtistId),
-    fk_DiscountId = values(fk_DiscountId);
+    code = values(code),
+    description = values(description),
+    fk_Discountid = values(fk_Discountid),
+    amountLeft = values(amountLeft)
