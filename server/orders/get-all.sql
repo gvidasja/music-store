@@ -1,16 +1,14 @@
 select
     orders.id,
-    title,
-    year,
-    price,
-    exclusive,
-    ordertypes.name as type,
-    artists.name as artist,
-    recordlabels.name as recordLabel,
-    discounts.name as discount
+    date,
+    status,
+    users.email as user,
+    albums.title as album,
+    promos.code as promo,
+    orders.price
 from
     orders
-    left join discounts on orders.fk_Discountid = discounts.id
-    join artists on orders.fk_Artistid = artists.id
-    join ordertypes on orders.type = ordertypes.id_Ordertype
-    join recordlabels on orders.fk_RecordLabelid = recordlabels.id
+        join orderstatus on orders.status = orderstatus.id_OrderStatus
+        join users on orders.fk_Userid = users.id
+        join albums on orders.fk_Albumid = albums.id
+        left join promos on orders.fk_Promocode = promos.code

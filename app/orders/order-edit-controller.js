@@ -11,20 +11,12 @@ export function OrderController( OrdersService, MapsService, $routeParams, $loca
             }, showError );
         }
 
-        MapsService.getOrderTypes().then( response => {
-            self.orderTypes = response.data;
+        MapsService.getUsers().then( response => {
+            self.users = response.data;
         }, showError );
 
-        MapsService.getRecordLabels().then( response => {
-            self.recordLabels = response.data;
-        }, showError );
-
-        MapsService.getArtists().then( response => {
-            self.artists = response.data;
-        }, showError );
-
-        MapsService.getDiscounts().then( response => {
-            self.discounts = response.data;
+        MapsService.getAlbums().then( response => {
+            self.albums = response.data;
         }, showError );
     }
 

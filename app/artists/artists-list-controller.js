@@ -1,25 +1,25 @@
 /* @ngInject */
-export function ArtistsController (ArtistsService) {
+export function ArtistsController( ArtistsService ) {
     var self = this;
 
-    angular.extend(self, {
+    angular.extend( self, {
         list: [],
         deleteArtist: deleteArtist,
         error: null
-    });
+    } );
 
-    function deleteArtist(artist) {
-        ArtistsService.deleteArtist(artist).then(() => {
+    function deleteArtist( artist ) {
+        ArtistsService.deleteArtist( artist ).then( () => {
             getArtists();
             self.error = null;
-        }, showError);
+        }, showError );
     }
 
     function getArtists() {
-        ArtistsService.getArtists().then((response) => {
+        ArtistsService.getArtists().then( ( response ) => {
             self.list = response.data;
             self.error = null;
-        }, showError);
+        }, showError );
     }
 
     function showError( error ) {

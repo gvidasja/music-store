@@ -1,12 +1,9 @@
 select
     id,
-    title,
-    year,
-    price,
-    exclusive,
-    orderArt,
-    type,
-    fk_RecordLabelid as recordLabel,
-    fk_Artistid as artist,
-    fk_Discountid as discount
+    date,
+    status,
+    fk_Userid as user,
+    fk_Albumid as album,
+    fk_Promocode as promo,
+    price
 from orders where id = {id};

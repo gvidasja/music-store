@@ -1,25 +1,25 @@
 /* @ngInject */
-export function OrdersController (OrdersService) {
+export function OrdersController( OrdersService ) {
     var self = this;
 
-    angular.extend(self, {
+    angular.extend( self, {
         list: [],
         deleteOrder: deleteOrder,
         error: null
-    });
+    } );
 
-    function deleteOrder(order) {
-        OrdersService.deleteOrder(order).then(() => {
+    function deleteOrder( order ) {
+        OrdersService.deleteOrder( order ).then( () => {
             getOrders();
             self.error = null;
-        }, showError);
+        }, showError );
     }
 
     function getOrders() {
-        OrdersService.getOrders().then((response) => {
+        OrdersService.getOrders().then( ( response ) => {
             self.list = response.data;
             self.error = null;
-        }, showError);
+        }, showError );
     }
 
     function showError( error ) {

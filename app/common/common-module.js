@@ -4,8 +4,8 @@ import { MapsService } from './services/maps';
 
 export const CommonModule = 'CommonModule';
 
-angular.module(CommonModule, [])
+angular.module( CommonModule, [] )
 
-.directive('alert', AlertDirective)
-.filter('capitalize', capitalize)
-.factory('MapsService', MapsService);
+    .directive( 'alert', AlertDirective )
+    .filter( 'capitalize', capitalize )
+    .factory( 'MapsService', MapsService );
