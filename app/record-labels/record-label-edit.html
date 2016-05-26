@@ -13,16 +13,16 @@
                     <form>
                         <fieldset class="form-group">
                             <input type="text"
-                                   placeholder="Title"
-                                   ng-model="recordLabel.model.title"
+                                   placeholder="Name"
+                                   ng-model="recordLabel.model.name"
                                    class="form-control"
                             />
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <input type="number"
-                                   placeholder="Year"
-                                   ng-model="recordLabel.model.year"
+                            <input type="text"
+                                   placeholder="Description"
+                                   ng-model="recordLabel.model.description"
                                    class="form-control"
                             />
                         </fieldset>
@@ -31,64 +31,13 @@
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
                                 <input type="number"
-                                       placeholder="Price"
-                                       ng-model="recordLabel.model.price"
+                                       placeholder="Royalties"
+                                       ng-model="recordLabel.model.royalties"
                                        class="form-control"
+                                       max="1"
+                                       min="0"
                                 />
                             </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"
-                                           ng-model="recordLabel.model.exclusive"
-                                           ng-true-value="1"
-                                           ng-false-value="0"
-                                    />
-                                    Exclusive
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="RecordLabel art url"
-                                   ng-model="recordLabel.model.recordLabelArt"
-                                   class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="recordLabel.model.type"
-                                    class="form-control"
-                                    title="type"
-                                    ng-options="at.id as at.name | capitalize for at in recordLabel.recordLabelTypes">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="recordLabel.model.recordLabel"
-                                    class="form-control"
-                                    title="recordLabel"
-                                    ng-options="rl.id as rl.name for rl in recordLabel.recordLabels">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="recordLabel.model.artist"
-                                    class="form-control"
-                                    title="artist"
-                                    ng-options="a.id as a.name for a in recordLabel.artists">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="recordLabel.model.discount"
-                                    class="form-control"
-                                    title="discount"
-                                    ng-options="d.id as d.name for d in recordLabel.discounts">
-                            </select>
                         </fieldset>
                     </form>
                 </div>

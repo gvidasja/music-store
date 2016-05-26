@@ -10,22 +10,6 @@ export function RecordLabelController( RecordLabelsService, MapsService, $routeP
                 self.model = response.data;
             }, showError );
         }
-
-        MapsService.getRecordLabelTypes().then( response => {
-            self.recordLabelTypes = response.data;
-        }, showError );
-
-        MapsService.getRecordLabels().then( response => {
-            self.recordLabels = response.data;
-        }, showError );
-
-        MapsService.getArtists().then( response => {
-            self.artists = response.data;
-        }, showError );
-
-        MapsService.getDiscounts().then( response => {
-            self.discounts = response.data;
-        }, showError );
     }
 
     function submit() {

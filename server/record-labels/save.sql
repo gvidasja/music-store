@@ -1,32 +1,15 @@
 insert into recordLabels(
     id,
-    title,
-    year,
-    price,
-    exclusive,
-    recordLabelArt,
-    type,
-    fk_RecordLabelId,
-    fk_ArtistId,
-    fk_DiscountId
+    name,
+    description,
+    royalties
 ) values (
     {id},
-    '{title}',
-    {year},
-    {price},
-    {exclusive},
-    '{recordLabelArt}',
-    {type},
-    {recordLabel},
-    {artist},
-    {discount}
+    '{name}',
+    '{description}',
+    {royalties}
 ) on duplicate key update
-    title = values(title),
-    year = values(year),
-    price = values(price),
-    exclusive = values(exclusive),
-    recordLabelArt = values(recordLabelArt),
-    type = values(type),
-    fk_RecordLabelId = values(fk_RecordLabelId),
-    fk_ArtistId = values(fk_ArtistId),
-    fk_DiscountId = values(fk_DiscountId);
+    id = values(id),
+    name = values(name),
+    description = values(description),
+    royalties = values(royalties)

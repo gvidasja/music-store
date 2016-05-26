@@ -9,36 +9,20 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Artist</th>
-                <th>Year</th>
-                <th>Price</th>
-                <th>Type</th>
-                <th colspan="3">Record Label</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th colspan="2">Royalties</th>
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="recordLabel in recordLabels.list">
                 <td>
                     <a ng-href="#record-label/{{recordLabel.id}}">
-                        {{recordLabel.title}}
+                        {{recordLabel.name}}
                     </a>
                 </td>
-                <td>{{recordLabel.artist}}</td>
-                <td>{{recordLabel.year}}</td>
-                <td>{{recordLabel.price | currency}}</td>
-                <td>{{recordLabel.type}}</td>
-                <td>{{recordLabel.recordLabel}}</td>
-                <td>
-                    <span ng-show="recordLabel.discount"
-                          class="label label-success pull-right">
-                        {{recordLabel.discount | capitalize}}
-                    </span>
-                    <span ng-show="recordLabel.exclusive"
-                          class="label label-warning pull-right">
-                        Exclusive
-                    </span>
-                </td>
+                <td>{{recordLabel.description}}</td>
+                <td>{{recordLabel.royalties}}</td>
                 <td>
                     <span ng-click="recordLabels.deleteRecordLabel(recordLabel)"
                           class="clickable glyphicon glyphicon-trash">
