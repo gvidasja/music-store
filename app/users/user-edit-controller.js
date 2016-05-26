@@ -10,22 +10,6 @@ export function UserController( UsersService, MapsService, $routeParams, $locati
                 self.model = response.data;
             }, showError );
         }
-
-        MapsService.getUserTypes().then( response => {
-            self.userTypes = response.data;
-        }, showError );
-
-        MapsService.getRecordLabels().then( response => {
-            self.recordLabels = response.data;
-        }, showError );
-
-        MapsService.getArtists().then( response => {
-            self.artists = response.data;
-        }, showError );
-
-        MapsService.getDiscounts().then( response => {
-            self.discounts = response.data;
-        }, showError );
     }
 
     function submit() {

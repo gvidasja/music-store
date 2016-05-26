@@ -20,74 +20,37 @@
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <input type="number"
-                                   placeholder="Year"
-                                   ng-model="track.model.year"
-                                   class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon">$</span>
+                                <span class="input-group-addon">BPM</span>
                                 <input type="number"
-                                       placeholder="Price"
-                                       ng-model="track.model.price"
+                                       placeholder="Tempo"
+                                       ng-model="track.model.tempo"
                                        class="form-control"
                                 />
                             </div>
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"
-                                           ng-model="track.model.exclusive"
-                                           ng-true-value="1"
-                                           ng-false-value="0"
-                                    />
-                                    Exclusive
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="Track art url"
-                                   ng-model="track.model.trackArt"
+                            <input type="time"
+                                   step="1"
+                                   ng-model="track.model.length"
                                    class="form-control"
                             />
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <select ng-model="track.model.type"
+                            <select ng-model="track.model.genre"
                                     class="form-control"
-                                    title="type"
-                                    ng-options="at.id as at.name | capitalize for at in track.trackTypes">
+                                    title="genre"
+                                    ng-options="g.id as g.name | capitalize for g in track.genres">
                             </select>
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <select ng-model="track.model.recordLabel"
+                            <select ng-model="track.model.album"
                                     class="form-control"
-                                    title="recordLabel"
-                                    ng-options="rl.id as rl.name for rl in track.recordLabels">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="track.model.artist"
-                                    class="form-control"
-                                    title="artist"
-                                    ng-options="a.id as a.name for a in track.artists">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="track.model.discount"
-                                    class="form-control"
-                                    title="discount"
-                                    ng-options="d.id as d.name for d in track.discounts">
+                                    title="album"
+                                    ng-options="a.id as a.name for a in track.albums">
                             </select>
                         </fieldset>
                     </form>

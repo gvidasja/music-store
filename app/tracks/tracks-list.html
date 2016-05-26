@@ -10,11 +10,10 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Artist</th>
-                <th>Year</th>
-                <th>Price</th>
-                <th>Type</th>
-                <th colspan="3">Record Label</th>
+                <th>Album</th>
+                <th>Tempo</th>
+                <th>Length</th>
+                <th colspan="2">Genre</th>
             </tr>
         </thead>
         <tbody>
@@ -24,21 +23,10 @@
                         {{track.title}}
                     </a>
                 </td>
-                <td>{{track.artist}}</td>
-                <td>{{track.year}}</td>
-                <td>{{track.price | currency}}</td>
-                <td>{{track.type}}</td>
-                <td>{{track.recordLabel}}</td>
-                <td>
-                    <span ng-show="track.discount"
-                          class="label label-success pull-right">
-                        {{track.discount | capitalize}}
-                    </span>
-                    <span ng-show="track.exclusive"
-                          class="label label-warning pull-right">
-                        Exclusive
-                    </span>
-                </td>
+                <td>{{track.album}}</td>
+                <td>{{track.tempo | number}} BPM</td>
+                <td>{{track.length}}</td>
+                <td>{{track.genre}}</td>
                 <td>
                     <span ng-click="tracks.deleteTrack(track)"
                           class="clickable glyphicon glyphicon-trash">

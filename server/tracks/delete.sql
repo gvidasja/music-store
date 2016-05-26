@@ -1,1 +1,1 @@
-delete from artists where id = {id}
+delete from tracks where id = {id}

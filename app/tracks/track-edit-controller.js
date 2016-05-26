@@ -10,21 +10,12 @@ export function TrackController( TracksService, MapsService, $routeParams, $loca
                 self.model = response.data;
             }, showError );
         }
-
-        MapsService.getTrackTypes().then( response => {
-            self.trackTypes = response.data;
+        MapsService.getAlbums().then( response => {
+            self.albums = response.data;
         }, showError );
 
-        MapsService.getRecordLabels().then( response => {
-            self.recordLabels = response.data;
-        }, showError );
-
-        MapsService.getArtists().then( response => {
-            self.artists = response.data;
-        }, showError );
-
-        MapsService.getDiscounts().then( response => {
-            self.discounts = response.data;
+        MapsService.getGenres().then( response => {
+            self.genres = response.data;
         }, showError );
     }
 

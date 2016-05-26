@@ -1,7 +1,8 @@
 select
     id,
-    name,
-    bio,
-    photo,
-    location
-from artists where id = {id};
+    title,
+    tempo,
+    length,
+    genre,
+    fk_Albumid
+from tracks where id = {id};

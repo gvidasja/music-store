@@ -5,7 +5,9 @@ var mapsController = express.Router();
 
 mapsController.get('/album-types', getAlbumTypes);
 mapsController.get('/discount-types', getDiscountTypes);
+mapsController.get('/genres', getGenres);
 
+mapsController.get('/albums', getAlbums);
 mapsController.get('/record-labels', getRecordLabels);
 mapsController.get('/artists', getArtists);
 mapsController.get('/discounts', getDiscounts);
@@ -41,6 +43,20 @@ function getArtists(request, response) {
 function getDiscounts(request, response) {
     db.query(
         'select id, name from discounts',
+        respond( response )
+    );
+}
+
+function getAlbums(request, response) {
+    db.query(
+        'select id, title as name from albums',
+        respond( response )
+    );
+}
+
+function getGenres(request, response) {
+    db.query(
+        'select id_Genre as id, name from genres',
         respond( response )
     );
 }

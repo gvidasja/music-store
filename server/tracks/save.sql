@@ -1,18 +1,21 @@
-insert into artists(
+insert into tracks(
     id,
-    name,
-    bio,
-    photo,
-    location
+    title,
+    tempo,
+    length,
+    genre,
+    fk_Albumid
 ) values (
-    '{id}',
-    '{name}',
-    '{bio}',
-    '{photo}',
-    '{location}'
+    {id},
+    '{title}',
+    {tempo},
+    {length},
+    {genre},
+    {album}
 ) on duplicate key update
     id = values(id),
-    name = values(name),
-    bio = values(bio),
-    photo = values(photo),
-    location = values(location)
+    title = values(title),
+    tempo = values(tempo),
+    length = values(length),
+    genre = values(genre),
+    fk_Albumid = values(fk_Albumid)

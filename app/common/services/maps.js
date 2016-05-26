@@ -3,6 +3,7 @@ export function MapsService( $http ) {
     return {
         getAlbumTypes: () => $http.get( '/maps/album-types' ),
         getDiscountTypes: () => $http.get( '/maps/discount-types' ),
+        getGenres: () => $http.get( '/maps/genres' ),
 
         getAlbums: () => $http.get( '/maps/albums' ),
         getArtists: () => $http.get( '/maps/artists' ),

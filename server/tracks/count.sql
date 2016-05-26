@@ -1,1 +1,1 @@
-select count(id) as id from artists
+select count(id) as id from tracks

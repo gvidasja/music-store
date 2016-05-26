@@ -12,83 +12,19 @@
                 <div class="panel-body">
                     <form>
                         <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="Title"
-                                   ng-model="user.model.title"
+                            <input type="email"
+                                   placeholder="Email"
+                                   ng-model="user.model.email"
                                    class="form-control"
                             />
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <input type="number"
-                                   placeholder="Year"
-                                   ng-model="user.model.year"
+                            <input type="tel"
+                                   placeholder="Phone"
+                                   ng-model="user.model.phone"
                                    class="form-control"
                             />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <input type="number"
-                                       placeholder="Price"
-                                       ng-model="user.model.price"
-                                       class="form-control"
-                                />
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"
-                                           ng-model="user.model.exclusive"
-                                           ng-true-value="1"
-                                           ng-false-value="0"
-                                    />
-                                    Exclusive
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="User art url"
-                                   ng-model="user.model.userArt"
-                                   class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="user.model.type"
-                                    class="form-control"
-                                    title="type"
-                                    ng-options="at.id as at.name | capitalize for at in user.userTypes">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="user.model.recordLabel"
-                                    class="form-control"
-                                    title="recordLabel"
-                                    ng-options="rl.id as rl.name for rl in user.recordLabels">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="user.model.artist"
-                                    class="form-control"
-                                    title="artist"
-                                    ng-options="a.id as a.name for a in user.artists">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="user.model.discount"
-                                    class="form-control"
-                                    title="discount"
-                                    ng-options="d.id as d.name for d in user.discounts">
-                            </select>
                         </fieldset>
                     </form>
                 </div>
