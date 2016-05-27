@@ -33,6 +33,7 @@
     "gulp-sourcemaps": "^2.0.0-alpha",
     "jquery": "^2.2.3",
     "mysql": "^2.10.2",
+    "promise": "^7.1.1",
     "run-sequence": "latest",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

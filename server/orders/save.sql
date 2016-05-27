@@ -1,32 +1,24 @@
 insert into orders(
     id,
-    title,
-    year,
-    price,
-    exclusive,
-    orderArt,
-    type,
-    fk_RecordLabelId,
-    fk_ArtistId,
-    fk_DiscountId
+    date,
+    status,
+    fk_Userid,
+    fk_Albumid,
+    fk_Promocode,
+    price
 ) values (
     {id},
-    '{title}',
-    {year},
-    {price},
-    {exclusive},
-    '{orderArt}',
-    {type},
-    {recordLabel},
-    {artist},
-    {discount}
+    {date},
+    {status},
+    {fk_Userid},
+    {fk_Albumid},
+    {fk_Promocode},
+    {price}
 ) on duplicate key update
-    title = values(title),
-    year = values(year),
-    price = values(price),
-    exclusive = values(exclusive),
-    orderArt = values(orderArt),
-    type = values(type),
-    fk_RecordLabelId = values(fk_RecordLabelId),
-    fk_ArtistId = values(fk_ArtistId),
-    fk_DiscountId = values(fk_DiscountId);
+    id = values(id),
+    date = values(date),
+    status = values(status),
+    fk_Userid = values(fk_Userid),
+    fk_Albumid = values(fk_Albumid),
+    fk_Promocode = values(fk_Promocode),
+    price = values(price)

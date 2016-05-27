@@ -31,9 +31,12 @@
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <input type="time"
-                                   step="1"
-                                   ng-model="track.model.length"
+                            <input type="number"
+                                   ng-model="track.model.minutes"
+                                   class="form-control"
+                            />
+                            <input type="number"
+                                   ng-model="track.model.seconds"
                                    class="form-control"
                             />
                         </fieldset>

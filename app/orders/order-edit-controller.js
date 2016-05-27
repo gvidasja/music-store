@@ -18,6 +18,10 @@ export function OrderController( OrdersService, MapsService, $routeParams, $loca
         MapsService.getAlbums().then( response => {
             self.albums = response.data;
         }, showError );
+
+        MapsService.getPromos().then( response => {
+            self.promos = response.data;
+        }, showError );
     }
 
     function submit() {

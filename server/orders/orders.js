@@ -1,6 +1,7 @@
 var express = require( 'express' );
 var db = require( './../database' );
 var helpers = require( './../helpers' );
+var promise = require( 'promise' );
 
 var queries = {
     getOrders: require( './get-all.sql' ),
@@ -45,6 +46,14 @@ function getOrder( request, response ) {
     }
 }
 
+function getAlbum( albumId ) {
+    return `select price from album where id = ${albumId}`;
+}
+
+function getDiscount( promoCode ) {
+    return `select amount, type from promos join discounts on discount.id == promo.fk_Disountid where promo.code = '${promoCode}`;
+}
+
 function saveOrder( request, response ) {
     db.query( queries.countOrders, ( error, rows ) => {
         if( error ) {
@@ -54,15 +63,25 @@ function saveOrder( request, response ) {
             var data = request.body;
             data.id = data.id || rows[ 0 ].id + 1;
 
-            db.query( helpers.insertData( queries.saveOrder, data ), ( error, rows ) => {
-                if( error ) {
-                    response.status( 400 );
-                    response.send( error.message );
-                } else {
-                    response.status( 200 );
-                    response.send();
-                }
-            } );
+            Promise.all(
+                db.query( getAlbum( data.album ), ( error, rows ) => rows[ 0 ] ),
+                db.query( getDiscount( data.promo ), ( error, rows ) => rows[ 0 ] )
+            ).then( responses => {
+                var album = responses[0];
+                var discount = responses[1];
+
+                if( discount.type )
+
+                db.query( helpers.insertData( queries.saveOrder, data ), ( error, rows ) => {
+                    if( error ) {
+                        response.status( 400 );
+                        response.send( error.message );
+                    } else {
+                        response.status( 200 );
+                        response.send();
+                    }
+                } );
+            });
         }
     } );
 }
@@ -77,6 +96,10 @@ function deleteOrder( request, response ) {
             response.send();
         }
     } );
+}
+
+function getPrice( request, response ) {
+
 }
 
 module.exports = ordersController;

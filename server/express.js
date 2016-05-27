@@ -33,6 +33,10 @@ app.use('/users', usersRouter);
 
 app.use('/maps', mapsRouter);
 
+app.get('/favicon.ico', (request, response) => {
+    response.sendFile(`${config.rootDir}/${config.favicon}`);
+});
+
 function getIndex(request, response) {
     response.sendFile(`${config.rootDir}/index.html`);
 }

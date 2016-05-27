@@ -25,7 +25,7 @@
                 </td>
                 <td>{{track.album}}</td>
                 <td>{{track.tempo | number}} BPM</td>
-                <td>{{track.length}}</td>
+                <td>{{track.length | toTime }}</td>
                 <td>{{track.genre}}</td>
                 <td>
                     <span ng-click="tracks.deleteTrack(track)"

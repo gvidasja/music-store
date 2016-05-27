@@ -10,6 +10,7 @@ var config = {
         database: 'lab1_music_store'
     },
 
+    favicon: 'favicon.ico',
     js: [ './app/app.js' ],
     index: [ './app/index.html' ],
     html: [ './app/**/*.html', '!./app/index.html' ],

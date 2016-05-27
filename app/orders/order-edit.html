@@ -12,82 +12,34 @@
                 <div class="panel-body">
                     <form>
                         <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="Title"
-                                   ng-model="order.model.title"
+                            <input type="date"
+                                   ng-init="order.model.date = order.model.date || Date.now()"
+                                   ng-model="order.model.date"
                                    class="form-control"
                             />
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <input type="number"
-                                   placeholder="Year"
-                                   ng-model="order.model.year"
-                                   class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <input type="number"
-                                       placeholder="Price"
-                                       ng-model="order.model.price"
-                                       class="form-control"
-                                />
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"
-                                           ng-model="order.model.exclusive"
-                                           ng-true-value="1"
-                                           ng-false-value="0"
-                                    />
-                                    Exclusive
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="Order art url"
-                                   ng-model="order.model.orderArt"
-                                   class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="order.model.type"
+                            <select ng-model="order.model.user"
                                     class="form-control"
-                                    title="type"
-                                    ng-options="at.id as at.name | capitalize for at in order.orderTypes">
+                                    title="user"
+                                    ng-options="u.id as u.name for u in order.users">
                             </select>
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <select ng-model="order.model.recordLabel"
+                            <select ng-model="order.model.album"
                                     class="form-control"
-                                    title="recordLabel"
-                                    ng-options="rl.id as rl.name for rl in order.recordLabels">
+                                    title="album"
+                                    ng-options="a.id as a.name for a in order.albums">
                             </select>
                         </fieldset>
 
                         <fieldset class="form-group">
-                            <select ng-model="order.model.artist"
+                            <select ng-model="order.model.promo"
                                     class="form-control"
-                                    title="artist"
-                                    ng-options="a.id as a.name for a in order.artists">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="order.model.discount"
-                                    class="form-control"
-                                    title="discount"
-                                    ng-options="d.id as d.name for d in order.discounts">
+                                    title="promo"
+                                    ng-options="p.id as p.name for p in order.promos">
                             </select>
                         </fieldset>
                     </form>
