@@ -15,39 +15,43 @@
                             <select ng-model="report.model.type"
                                     class="form-control"
                                     title="type"
-                                    ng-options="r.id as r.name for r in reports.reportTypes">
+                                    ng-options="r.id as r.name for r in report.reportTypes">
                             </select>
                         </fieldset>
 
-                        <filedset class="form-group">
-                            <input type="date"
-                                   ng-model="report.model.from"
-                                   class="form-control"
-                            >
-                        </filedset>
+                        <div ng-if="report.model.type === report.reportTypes[0].id">
+                            <filedset class="form-group">
+                                <input type="date"
+                                       ng-model="report.model.from"
+                                       class="form-control"
+                                >
+                            </filedset>
 
-                        <filedset class="form-group">
-                            <input type="date"
-                                   ng-model="report.model.to"
-                                   class="form-control"
-                            >
-                        </filedset>
+                            <filedset class="form-group">
+                                <input type="date"
+                                       ng-model="report.model.to"
+                                       class="form-control"
+                                >
+                            </filedset>
+                        </div>
 
-                        <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="Title"
-                                   ng-model="report.model.title"
-                                   class="form-control"
-                            />
-                        </fieldset>
+                        <div ng-if="report.model.type === report.reportTypes[1].id">
+                            <filedset class="form-group">
+                                <select ng-model="report.model.artist"
+                                        class="form-control"
+                                        title="type"
+                                        ng-options="a.id as a.name for a in report.artists">
+                                </select>
+                            </filedset>
 
-                        <fieldset class="form-group">
-                            <input type="number"
-                                   placeholder="Year"
-                                   ng-model="report.model.year"
-                                   class="form-control"
-                            />
-                        </fieldset>
+                            <filedset class="form-group">
+                                <select ng-model="report.model.recordLabel"
+                                        class="form-control"
+                                        title="type"
+                                        ng-options="r.id as r.name for r in report.recordLabel">
+                                </select>
+                            </filedset>
+                        </div>
 
                         <fieldset class="form-group">
                             <div class="input-group">

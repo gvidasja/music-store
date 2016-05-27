@@ -1,6 +1,7 @@
 /* @ngInject */
 export function ReportsController( ReportsService ) {
     var self = this;
+    console.log('e');
 
     angular.extend( self, {
         list: [],

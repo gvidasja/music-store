@@ -10,9 +10,9 @@ insert into orders(
     {id},
     {date},
     {status},
-    {fk_Userid},
-    {fk_Albumid},
-    {fk_Promocode},
+    {user},
+    {album},
+    '{promo}',
     {price}
 ) on duplicate key update
     id = values(id),

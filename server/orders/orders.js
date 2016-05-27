@@ -8,6 +8,12 @@ var discountTypes = {
     sum: 2
 };
 
+var orderStatus = {
+    canceled: 1,
+    pending: 2,
+    complete: 3
+};
+
 var queries = {
     getOrders: require( './get-all.sql' ),
     getOrder: require( './get.sql' ),
@@ -52,11 +58,11 @@ function getOrder( request, response ) {
 }
 
 function getAlbum( albumId ) {
-    return `select price from album where id = ${albumId}`;
+    return `select price from albums where id = ${albumId}`;
 }
 
 function getDiscount( promoCode ) {
-    return `select amount, type from promos join discounts on discount.id == promo.fk_Disountid where promo.code = '${promoCode}`;
+    return `select amount, type from promos join discounts on discounts.id = promos.fk_Discountid where promos.code = '${promoCode}'`;
 }
 
 function saveOrder( request, response ) {
@@ -66,6 +72,7 @@ function saveOrder( request, response ) {
             response.send( error.message );
         } else {
             var data = request.body;
+            data.status = data.status || orderStatus.pending;
             data.id = data.id || rows[ 0 ].id + 1;
 
             var promises = [
@@ -86,6 +93,8 @@ function saveOrder( request, response ) {
                     data.price = Math.max( album.price - discount.amount, 0 );
                 }
 
+                if(data.id)
+
                 db.query( helpers.insertData( queries.saveOrder, data ), ( error, rows ) => {
                     if( error ) {
                         response.status( 400 );
@@ -95,6 +104,9 @@ function saveOrder( request, response ) {
                         response.send();
                     }
                 } );
+            }, error => {
+                response.status(400);
+                response.send(error);
             });
         }
     } );

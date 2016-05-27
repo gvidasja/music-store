@@ -36,7 +36,7 @@
                 <td>{{order.album}}</td>
                 <td>{{order.user}}</td>
                 <td>{{order.date | date}}</td>
-                <td>{{order.price}}</td>
+                <td>{{order.price | number : 2}}</td>
                 <td>
                     <span ng-show="order.promo"
                           class="label label-info pull-right">

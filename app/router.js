@@ -12,6 +12,7 @@ export function MusicStoreRouter( $routeProvider ) {
         .addRoutes( 'RecordLabel' )
         .addRoutes( 'Track' )
         .addRoutes( 'User' )
+        .addRoutes( 'Report' )
         .otherwise({
             redirectTo: '/albums'
         });

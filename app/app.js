@@ -7,6 +7,7 @@ import { PromosModule } from './promos/promos-module';
 import { RecordLabelsModule } from './record-labels/record-labels-module';
 import { TracksModule } from './tracks/tracks-module';
 import { UsersModule } from './users/users-module';
+import { ReportsModule } from './reports/reports-module';
 import { CommonModule } from './common/common-module';
 
 import { MusicStoreRouter } from './router';
@@ -24,6 +25,7 @@ var MusicStore = angular.module( 'MusicStore', [
     RecordLabelsModule,
     TracksModule,
     UsersModule,
+    ReportsModule,
 
     CommonModule
 ] ).config( MusicStoreRouter );

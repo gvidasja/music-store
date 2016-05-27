@@ -25,6 +25,9 @@ export function OrderController( OrdersService, MapsService, $routeParams, $loca
     }
 
     function submit() {
+        var date = self.model.date || new Date(Date.now());
+        self.model.date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+
         OrdersService.saveOrder( self.model ).then( () => {
             $location.path( '/orders' );
         }, showError );
