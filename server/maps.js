@@ -80,7 +80,7 @@ function getAlbums( request, response ) {
 function respond( response ) {
     return function( error, rows ) {
         if( error ) {
-            response.status( 400 );
+            response.status = 400;
             response.send( error.message );
         } else {
             response.send( rows );

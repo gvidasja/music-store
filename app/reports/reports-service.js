@@ -1,9 +1,8 @@
 /* @ngInject */
 export function ReportsService( $http ) {
     return {
-        getReports: () => $http.get( '/reports' ),
-        getReport: ( id ) => $http.get( `/reports/${id}` ),
-        saveReport: ( report ) => $http.post( '/reports', report ),
-        deleteReport: ( report ) => $http.delete( `/reports/${report.id}` )
+        getAlbumsReport: ( data ) => {  console.log(data); return $http.post( '/reports/albums', data ); },
+        getOrdersReport: ( data ) => $http.post( '/reports/orders', data ),
+        getTracksReport: ( data ) => $http.post( '/reports/tracks', data )
     }
 }

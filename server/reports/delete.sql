@@ -1,1 +1,0 @@
-delete from albums where id = {id}

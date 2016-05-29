@@ -1,129 +1,101 @@
 <div class="container" style="margin-top: 12px" xmlns="">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-12">
 
             <alert message="report.error"></alert>
 
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    Choose a report
-                </div>
+            <form>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Choose a report</h3>
+                    </div>
 
-                <div class="panel-body">
-                    <form>
+                    <div class="panel-body">
                         <fieldset class="form-group">
-                            <select ng-model="report.model.type"
-                                    class="form-control"
-                                    title="type"
-                                    ng-options="r.id as r.name for r in report.reportTypes">
-                            </select>
+                            <label>Report type:</label>
+                            <div class="input-group">
+                                <select ng-model="report.model.type"
+                                        class="form-control"
+                                        title="type"
+                                        ng-change="report.clear()"
+                                        ng-options="r.id as r.name for r in report.reportTypes">
+                                </select>
+                                <div class="input-group-btn">
+                                    <button ng-click="report.submit()"
+                                            class="btn btn-success"
+                                            ng-disabled="!report.model.type">
+                                        Get report
+                                    </button>
+                                </div>
+                            </div>
                         </fieldset>
+                    </div>
 
+                    <div class="panel-footer" ng-if="report.model.type">
                         <div ng-if="report.model.type === report.reportTypes[0].id">
-                            <filedset class="form-group">
-                                <input type="date"
-                                       ng-model="report.model.from"
-                                       class="form-control"
-                                >
-                            </filedset>
-
-                            <filedset class="form-group">
-                                <input type="date"
-                                       ng-model="report.model.to"
-                                       class="form-control"
-                                >
-                            </filedset>
-                        </div>
-
-                        <div ng-if="report.model.type === report.reportTypes[1].id">
-                            <filedset class="form-group">
+                            <fieldset class="form-group">
+                                <label>Artist:</label>
                                 <select ng-model="report.model.artist"
                                         class="form-control"
                                         title="type"
                                         ng-options="a.id as a.name for a in report.artists">
                                 </select>
-                            </filedset>
+                            </fieldset>
 
-                            <filedset class="form-group">
+                            <fieldset class="form-group">
+                                <label>Record Label:</label>
+                                <select ng-model="report.model.recordLabel"
+                                        class="form-control"
+                                        title="type"
+                                        ng-options="r.id as r.name for r in report.recordLabels">
+                                </select>
+                            </fieldset>
+
+                            <albums-report report="report.report"></albums-report>
+                        </div>
+
+                        <div ng-if="report.model.type === report.reportTypes[1].id">
+                            <fieldset class="form-group">
+                                <label>Date from:</label>
+                                <input type="date"
+                                       ng-model="report.model.from"
+                                       class="form-control"
+                                >
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                                <label>Date to:</label>
+                                <input type="date"
+                                       ng-model="report.model.to"
+                                       class="form-control"
+                                >
+                            </fieldset>
+
+                            <orders-report report="report.report"></orders-report>
+                        </div>
+
+                        <div ng-if="report.model.type === report.reportTypes[2].id">
+                            <fieldset class="form-group">
+                                <select ng-model="report.model.artist"
+                                        class="form-control"
+                                        title="type"
+                                        ng-options="a.id as a.name for a in report.artists">
+                                </select>
+                            </fieldset>
+
+                            <fieldset class="form-group">
                                 <select ng-model="report.model.recordLabel"
                                         class="form-control"
                                         title="type"
                                         ng-options="r.id as r.name for r in report.recordLabel">
                                 </select>
-                            </filedset>
+                            </fieldset>
+
+                            <tracks-report report="report.report"></tracks-report>
                         </div>
-
-                        <fieldset class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon">$</span>
-                                <input type="number"
-                                       placeholder="Price"
-                                       ng-model="report.model.price"
-                                       class="form-control"
-                                />
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"
-                                           ng-model="report.model.exclusive"
-                                           ng-true-value="1"
-                                           ng-false-value="0"
-                                    />
-                                    Exclusive
-                                </label>
-                            </div>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <input type="text"
-                                   placeholder="Report art url"
-                                   ng-model="report.model.reportArt"
-                                   class="form-control"
-                            />
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="report.model.type"
-                                    class="form-control"
-                                    title="type"
-                                    ng-options="at.id as at.name | capitalize for at in report.reportTypes">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="report.model.recordLabel"
-                                    class="form-control"
-                                    title="recordLabel"
-                                    ng-options="rl.id as rl.name for rl in report.recordLabels">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="report.model.artist"
-                                    class="form-control"
-                                    title="artist"
-                                    ng-options="a.id as a.name for a in report.artists">
-                            </select>
-                        </fieldset>
-
-                        <fieldset class="form-group">
-                            <select ng-model="report.model.discount"
-                                    class="form-control"
-                                    title="discount"
-                                    ng-options="d.id as d.name for d in report.discounts">
-                            </select>
-                        </fieldset>
-                    </form>
+                    </div>
                 </div>
-
-                <div class="panel-footer">
-                    <a ng-click="report.submit()" class="btn btn-primary">Save</a>
-                    <a href="#reports" class="btn">Cancel</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
