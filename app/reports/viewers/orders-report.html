@@ -1,0 +1,55 @@
+<div class="row" ng-if="report">
+    <div class="col-md-8">
+        <h4>Orders:</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Album</th>
+                <th>Ordered by</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in report[0]">
+                <td>{{order.album}}</td>
+                <td>{{order.user}}</td>
+                <td>{{order.price}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Most purchased albums</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Album</th>
+                <th>Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in report[1]">
+                <td>{{item.album}}</td>
+                <td>{{item.orderCount}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h4>User with most purchases</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Albums bought</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in report[2]">
+                <td>{{item.user}}</td>
+                <td>{{item.orderCount}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

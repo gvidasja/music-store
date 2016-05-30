@@ -1,0 +1,55 @@
+<div class="row" ng-if="report">
+    <div class="col-md-8">
+        <h4>Tracks by artist and genre</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Track</th>
+                <th>Artist</th>
+                <th>Genre</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="track in report[0]">
+                <td>{{track.track}}</td>
+                <td>{{track.artist}}</td>
+                <td>{{track.genre}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-4">
+        <h4>Track count by artist</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Artist</th>
+                <th>Track Count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in report[1]">
+                <td>{{item.artist}}</td>
+                <td>{{item.trackCount}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <h4>Track count by genre</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Genre</th>
+                <th>Track count</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in report[2]">
+                <td>{{item.genre}}</td>
+                <td>{{item.trackCount}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

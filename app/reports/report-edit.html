@@ -7,7 +7,13 @@
             <form>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3>Choose a report</h3>
+                        <h3>
+                            Choose a report
+                            <button class="pull-right btn btn-danger"
+                                    ng-click="report.clearEverything()">
+                                Clear
+                            </button>
+                        </h3>
                     </div>
 
                     <div class="panel-body">
@@ -56,19 +62,21 @@
 
                         <div ng-if="report.model.type === report.reportTypes[1].id">
                             <fieldset class="form-group">
-                                <label>Date from:</label>
-                                <input type="date"
-                                       ng-model="report.model.from"
-                                       class="form-control"
-                                >
+                                <label>Album</label>
+                                <select ng-model="report.model.album"
+                                        class="form-control"
+                                        title="type"
+                                        ng-options="a.id as a.name for a in report.albums">
+                                </select>
                             </fieldset>
 
                             <fieldset class="form-group">
-                                <label>Date to:</label>
-                                <input type="date"
-                                       ng-model="report.model.to"
-                                       class="form-control"
-                                >
+                                <label>User</label>
+                                <select ng-model="report.model.user"
+                                        class="form-control"
+                                        title="type"
+                                        ng-options="u.id as u.name for u in report.users">
+                                </select>
                             </fieldset>
 
                             <orders-report report="report.report"></orders-report>
@@ -84,10 +92,10 @@
                             </fieldset>
 
                             <fieldset class="form-group">
-                                <select ng-model="report.model.recordLabel"
+                                <select ng-model="report.model.genre"
                                         class="form-control"
                                         title="type"
-                                        ng-options="r.id as r.name for r in report.recordLabel">
+                                        ng-options="g.id as g.name for g in report.genres">
                                 </select>
                             </fieldset>
 

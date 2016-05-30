@@ -6,7 +6,15 @@ var promise = require( 'promise' );
 var queries = {
     albums: require( './albums.sql' ),
     albumsByLabels: require( './albums-by-label.sql' ),
-    albumsByArtists: require( './albums-by-artist.sql')
+    albumsByArtists: require( './albums-by-artist.sql'),
+
+    orders: require( './orders.sql' ),
+    ordersByAlbum: require( './orders-by-album.sql' ),
+    ordersByUser: require( './orders-by-user.sql' ),
+    
+    tracks: require( './tracks.sql' ),
+    tracksByArtist: require( './tracks-by-artist.sql' ),
+    tracksByGenre: require( './tracks-by-genre.sql' )
 };
 
 var reportsController = express.Router();
@@ -37,40 +45,42 @@ function getAlbumsReport( request, response ) {
 
 function getOrdersReport( request, response ) {
     var data = {
-        from: { field: 'date', data: request.body.artist },
-        to: { field: 'date', data: request.body.recordLabel }
+        user: { field: 'id', data: request.body.user },
+        album: { field: 'id', data: request.body.album }
     };
 
-    var query = helpers.insertConditions( queries.albums, data );
-    var requests = [];
+    var query = helpers.insertConditions( queries.orders, data );
 
-    requests.push( db.query( helpers.insertData( query, data ), ( error, rows ) => {
-        if( error ) {
-            response.status( 400 );
-            response.send( error.message );
-        } else {
-            response.send( rows );
-        }
-    } ) );
+    promise.all([
+        toPromise( helpers.insertData( query, data ) ),
+        toPromise( helpers.insertConditions( queries.ordersByAlbum, data ) ),
+        toPromise( helpers.insertConditions( queries.ordersByUser, data ) )
+    ]).then( responses => {
+        response.send( responses );
+    }, error => {
+        response.status( 400 );
+        response.send( error.message );
+    });
 }
 
 function getTracksReport( request, response ) {
     var data = {
-        artist: { field: 'id', data: request.body.artist },
-        recordLabel: { field: 'id', data: request.body.recordLabel }
+        genre: { field: 'id_Genre', data: request.body.genre },
+        artist: { field: 'id', data: request.body.artist }
     };
 
-    var query = helpers.insertConditions( queries.albums, data );
-    var requests = [];
+    var query = helpers.insertConditions( queries.tracks, data );
 
-    requests.push( db.query( helpers.insertData( query, data ), ( error, rows ) => {
-        if( error ) {
-            response.status( 400 );
-            response.send( error.message );
-        } else {
-            response.send( rows );
-        }
-    } ) );
+    promise.all([
+        toPromise( helpers.insertData( query, data ) ),
+        toPromise( helpers.insertConditions( queries.tracksByArtist, data ) ),
+        toPromise( helpers.insertConditions( queries.tracksByGenre, data ) )
+    ]).then( responses => {
+        response.send( responses );
+    }, error => {
+        response.status( 400 );
+        response.send( error.message );
+    });
 }
 
 function toPromise( query ) {

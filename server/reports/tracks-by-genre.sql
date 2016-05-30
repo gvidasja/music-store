@@ -1,6 +1,5 @@
 select
-    tracks.title as track,
-    artists.name as artist,
+    count(tracks.id) as trackCount,
     genres.name as genre
 from
     tracks
@@ -8,4 +7,5 @@ from
         join albums on tracks.fk_Albumid = albums.id
         join artists on albums.fk_Artistid = artists.id
     [where]
-order by artist
+group by genre
+order by trackCount desc

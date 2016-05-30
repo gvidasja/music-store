@@ -2,7 +2,7 @@
 export function ReportController( ReportsService, MapsService, $routeParams, $location ) {
     var self = this;
 
-    angular.extend( self, { submit, clear } );
+    angular.extend( self, { submit, clear, clearEverything } );
 
     function init() {
         MapsService.getArtists().then( response => {
@@ -11,6 +11,18 @@ export function ReportController( ReportsService, MapsService, $routeParams, $lo
 
         MapsService.getRecordLabels().then( response => {
             self.recordLabels = response.data;
+        });
+
+        MapsService.getGenres().then( response => {
+            self.genres = response.data;
+        });
+
+        MapsService.getAlbums().then( response => {
+            self.albums = response.data;
+        });
+
+        MapsService.getUsers().then( response => {
+            self.users = response.data;
         });
 
         self.reportTypes = [
@@ -23,6 +35,7 @@ export function ReportController( ReportsService, MapsService, $routeParams, $lo
     function submit() {
         var call;
         self.report = null;
+        self.error = null;
 
         switch( self.model.type ) {
             case self.reportTypes[0].id:
@@ -34,6 +47,11 @@ export function ReportController( ReportsService, MapsService, $routeParams, $lo
         }
 
         call( self.model ).then( processReport, showError );
+    }
+
+    function clearEverything() {
+        clear();
+        self.model.type = null;
     }
 
     function clear() {
